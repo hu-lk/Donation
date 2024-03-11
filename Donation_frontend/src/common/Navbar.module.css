@@ -1,0 +1,51 @@
+/* NavBar.module.css */
+
+.NavBar {
+  background-color: #333;
+  color: white;
+  padding: 10px 0;
+  width: 100vw;
+  height: 52px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.NavBarContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100vw;
+  max-height: 12vh;
+  margin: 0 auto;
+}
+
+.NavBarTitle {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: white;
+}
+
+.NavBarButtons {
+  display: flex;
+}
+
+.NavBarButton {
+  margin-left: 20px;
+  text-decoration: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #555;
+  }
+}
+.NavBarTitle,
+.NavBarButton {
+  cursor: pointer;
+  /* or */
+  border: 1px solid #ccc;
+  padding: 5px;
+}

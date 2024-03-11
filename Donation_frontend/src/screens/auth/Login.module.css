@@ -1,0 +1,36 @@
+/* Login.module.css */
+
+.LoginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0b0b0b;
+}
+
+.CardContainer {
+  display: flex;
+  max-width: 460px;
+  padding: 1rem;
+  text-align: center;
+  background-color: #fff;
+  color: #0b0b0b;
+}
+
+.CardHeader {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.FieldLabel {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.ErrorMessage {
+  color: red;
+  margin-top: 1rem;
+}
+
+/* Add more styles as needed */
