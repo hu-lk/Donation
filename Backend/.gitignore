@@ -1,0 +1,11 @@
+node_modules
+
+.vscode
+
+.env
+
+test.rest
+
+.prettierignore
+
+testing.js

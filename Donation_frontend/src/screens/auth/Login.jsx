@@ -1,52 +1,52 @@
-import { useState } from "react";
-import { InputText } from "primereact/inputtext";
-import { Password } from "primereact/password";
-import { Button } from "primereact/button";
-import { Card } from "primereact/card";
-import { Link, useNavigate } from "react-router-dom";
-import style from "./Login.module.css";
+import { useState } from 'react'
+import { InputText } from 'primereact/inputtext'
+import { Password } from 'primereact/password'
+import { Button } from 'primereact/button'
+import { Card } from 'primereact/card'
+import { Link, useNavigate } from 'react-router-dom'
+import style from './Login.module.css'
 
 const Login = () => {
-  const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const navigate = useNavigate()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
 
   const handleLogin = async () => {
     // Perform validation, e.g., check if email and password are not empty
     if (!email && password != null) {
-      setError("Please provide email");
-      return;
+      setError('Please provide email')
+      return
     } else if (email != null && !password) {
-      setError("Please provide password");
-      return;
+      setError('Please provide password')
+      return
     } else {
-      setError("Please provide both email and password");
+      setError('Please provide both email and password')
     }
 
     // Make an API call to your backend for authentication
     try {
       // Replace the following line with your actual API endpoint for authentication
-      const response = await fetch("YOUR_BACKEND_API_ENDPOINT", {
-        method: "POST",
+      const response = await fetch('YOUR_BACKEND_API_ENDPOINT', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email, password }),
-      });
+        body: JSON.stringify({ email, password })
+      })
 
       if (response.ok) {
         // Authentication successful, redirect to the dashboard
-        navigate("/dashboard");
+        navigate('/dashboard')
       } else {
         // Authentication failed, handle error
-        setError("Invalid email or password");
+        setError('Invalid email or password')
       }
     } catch (error) {
-      console.error("Error during authentication:", error);
-      setError("An unexpected error occurred");
+      console.error('Error during authentication:', error)
+      setError('An unexpected error occurred')
     }
-  };
+  }
 
   return (
     <div className={style.LoginContainer}>
@@ -88,7 +88,7 @@ const Login = () => {
         </div>
       </Card>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

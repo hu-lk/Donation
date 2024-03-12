@@ -1,0 +1,34 @@
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY AUTO_INCREMENT,
+    Email VARCHAR(100) NOT NULL,
+    Password VARCHAR(255) NOT NULL,
+    RegistrationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Campaigns (
+    CampaignID INT PRIMARY KEY AUTO_INCREMENT,
+    UserID INT,
+    CampaignName VARCHAR(100) NOT NULL,
+    Description TEXT,
+    TargetAmount DECIMAL(10, 2) NOT NULL,
+    CurrentAmount DECIMAL(10, 2) DEFAULT 0,
+    CampaignStartDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CampaignEndDate TIMESTAMP
+);
+
+CREATE TABLE Donations (
+    DonationID INT PRIMARY KEY AUTO_INCREMENT,
+    UserID INT,
+    CampaignID INT,
+    Amount DECIMAL(10, 2) NOT NULL,
+    DonationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Tokens (
+    TokenID INT PRIMARY KEY AUTO_INCREMENT,
+    UserID INT,
+    TokenType ENUM('access', 'refresh') NOT NULL,
+    Token VARCHAR(255) NOT NULL,
+    ExpiryDateTime DATETIME NOT NULL
+);
+
