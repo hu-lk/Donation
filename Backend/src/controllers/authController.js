@@ -1,6 +1,7 @@
 const logger = require('../utilities/logger')
 const User = require('../models/user.model')
 const generateAuthTokens = require('../helpers/jwt_helper')
+const bcrypt = require('bcrypt')
 
 // Login
 const login = async (req, res) => {
