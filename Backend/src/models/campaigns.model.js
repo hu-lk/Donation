@@ -1,40 +1,37 @@
 const { DataTypes } = require('sequelize')
-const db = require('../config/sequelize.js')
+const db = require('../config/database')
 
-const Campaign = db.define(
-  'Campaign',
-  {
-    userID: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    campaignName: {
-      type: DataTypes.STRING(100),
-      allowNull: false
-    },
-    description: {
-      type: DataTypes.TEXT
-    },
-    targetAmount: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: false
-    },
-    currentAmount: {
-      type: DataTypes.DECIMAL(10, 2),
-      defaultValue: 0
-    },
-    campaignStartDate: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
-    },
-    campaignEndDate: {
-      type: DataTypes.DATE
-    }
+const Campaign = db.define('Campaign', {
+  CampaignID: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
   },
-  {
-    timestamps: false,
-    tableName: 'Campaigns'
+  UserID: {
+    type: DataTypes.INTEGER
+  },
+  CampaignName: {
+    type: DataTypes.STRING(100),
+    allowNull: false
+  },
+  Description: {
+    type: DataTypes.TEXT
+  },
+  TargetAmount: {
+    type: DataTypes.DECIMAL(10, 2),
+    allowNull: false
+  },
+  CurrentAmount: {
+    type: DataTypes.DECIMAL(10, 2),
+    defaultValue: 0
+  },
+  CampaignStartDate: {
+    type: DataTypes.DATE,
+    defaultValue: DataTypes.NOW
+  },
+  CampaignEndDate: {
+    type: DataTypes.DATE
   }
-)
+})
 
 module.exports = Campaign

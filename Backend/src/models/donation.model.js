@@ -1,30 +1,26 @@
 const { DataTypes } = require('sequelize')
-const db = require('../config/sequelize.js')
+const db = require('../config/database')
 
-const Donation = db.define(
-  'Donation',
-  {
-    userID: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    campaignID: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    amount: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: false
-    },
-    donationDate: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
-    }
+const Donation = db.define('Donation', {
+  DonationID: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
   },
-  {
-    timestamps: false,
-    tableName: 'Donations'
+  UserID: {
+    type: DataTypes.INTEGER
+  },
+  CampaignID: {
+    type: DataTypes.INTEGER
+  },
+  Amount: {
+    type: DataTypes.DECIMAL(10, 2),
+    allowNull: false
+  },
+  DonationDate: {
+    type: DataTypes.DATE,
+    defaultValue: DataTypes.NOW
   }
-)
+})
 
 module.exports = Donation

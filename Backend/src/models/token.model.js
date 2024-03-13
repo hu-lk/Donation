@@ -1,32 +1,28 @@
+// models/Token.js
 const { DataTypes } = require('sequelize')
-const db = require('../config/sequelize.js')
-const { tokenTypes } = require('../config/tokenTypes')
+const db = require('../config/database')
 
-const Token = db.define(
-  'Token',
-  {
-    userID: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    tokenType: {
-      type: DataTypes.ENUM('access', 'refresh'),
-      allowNull: false,
-      defaultValue: tokenTypes.ACCESS // Set default value to 'access'
-    },
-    token: {
-      type: DataTypes.STRING(255),
-      allowNull: false
-    },
-    expiryDateTime: {
-      type: DataTypes.DATE,
-      allowNull: false
-    }
+const Token = db.define('Token', {
+  TokenID: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
   },
-  {
-    timestamps: false,
-    tableName: 'Tokens'
+  UserID: {
+    type: DataTypes.INTEGER
+  },
+  TokenType: {
+    type: DataTypes.ENUM('access', 'refresh'),
+    allowNull: false
+  },
+  Token: {
+    type: DataTypes.STRING(255),
+    allowNull: false
+  },
+  ExpiryDateTime: {
+    type: DataTypes.DATE,
+    allowNull: false
   }
-)
+})
 
 module.exports = Token
