@@ -1,6 +1,6 @@
 const moment = require('moment')
 const jwt = require('jsonwebtoken')
-const AuthToken = require('../domainEntities/authTokenEntity.js')
+const Token = require('../models/token.model.js')
 const { tokenTypes } = require('../config/tokenTypes.js')
 
 /**
@@ -38,7 +38,7 @@ const generateToken = (
  */
 
 const saveToken = async (token, userId, expires, tokenType) => {
-  const tokenDoc = await AuthToken.create({
+  const tokenDoc = await Token.create({
     tokenValue: token,
     profileId: userId,
     expiresAt: expires.toDate(),
@@ -46,47 +46,6 @@ const saveToken = async (token, userId, expires, tokenType) => {
     tokenType
   })
   return tokenDoc
-}
-
-const generateVerifyEmailToken = async (user) => {
-  const verifyEmailTokenExpires = moment().add(
-    process.env.JWT_VERIFY_EMAIL_EXPIRATION_MINUTES,
-    'minutes'
-  )
-
-  const verifyEmailToken = generateToken(
-    user.profileId,
-    verifyEmailTokenExpires,
-    tokenTypes.VERIFY_EMAIL
-  )
-
-  await saveToken(
-    verifyEmailToken,
-    user.profileId,
-    verifyEmailTokenExpires,
-    tokenTypes.VERIFY_EMAIL
-  )
-
-  return verifyEmailToken
-}
-
-const generateForgotPasswordToken = async (user) => {
-  const forgotPasswordTokenExpires = moment().add(
-    process.env.JWT_FORGOT_PASSWORD_EXPIRATION_MINUTES,
-    'minutes'
-  )
-  const forgotPasswordToken = generateToken(
-    user.profileId,
-    forgotPasswordTokenExpires,
-    tokenTypes.FORGOT_PASSWORD
-  )
-  await saveToken(
-    forgotPasswordToken,
-    user.profileId,
-    forgotPasswordTokenExpires,
-    tokenTypes.FORGOT_PASSWORD
-  )
-  return forgotPasswordToken
 }
 
 const generateAuthTokens = async (user) => {
@@ -135,7 +94,5 @@ const generateAuthTokens = async (user) => {
 }
 
 module.exports = {
-  generateAuthTokens,
-  generateForgotPasswordToken,
-  generateVerifyEmailToken
+  generateAuthTokens
 }

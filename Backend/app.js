@@ -31,7 +31,7 @@ const checkHeartbeat = (req, res) => {
   }
 }
 
-app.get('/profile/heartbeat', checkHeartbeat)
+app.get('/heartbeat', checkHeartbeat)
 app.disable('x-powered-by')
 app.use((req, res, next) => {
   res.removeHeader('Server')

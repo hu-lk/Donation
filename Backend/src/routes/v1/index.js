@@ -1,8 +1,7 @@
 const express = require('express')
 const registerProfileRoute = require('./registerProfile.route')
-const addressRoute = require('./address.route')
+const campaignRoute = require('./campaign.route')
 const authRoute = require('./auth.route')
-const profileRoute = require('./profile.route')
 
 const router = express.Router()
 
@@ -17,11 +16,7 @@ const defaultRoutes = [
   },
   {
     path: '',
-    route: addressRoute
-  },
-  {
-    path: '',
-    route: profileRoute
+    route: campaignRoute
   }
 ]
 
