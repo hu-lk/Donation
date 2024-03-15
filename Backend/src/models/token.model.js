@@ -1,6 +1,6 @@
 // models/Token.js
 const { DataTypes } = require('sequelize')
-const db = require('../config/database')
+const db = require('../config/sequelize')
 
 const Token = db.define('Token', {
   TokenID: {

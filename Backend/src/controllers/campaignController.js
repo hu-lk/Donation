@@ -1,15 +1,18 @@
 const Campaign = require('../models/campaigns.model')
+const Token = require('../models/token.model')
 
 // Create a new campaign
 const createCampaign = async (req, res) => {
   try {
-    const { name, description, targetAmount, campaignEndDate } = req.body
+    const { CampaignName, Description, TargetAmount, CampaignEndDate } =
+      req.body
+    // const token = req.params
 
     const newCampaign = await Campaign.create({
-      name,
-      description,
-      targetAmount,
-      campaignEndDate
+      CampaignName,
+      Description,
+      TargetAmount,
+      CampaignEndDate
     })
 
     res.status(201).json({ success: true, campaign: newCampaign })

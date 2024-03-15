@@ -1,0 +1,149 @@
+###
+GET http://localhost:4001/
+
+###
+get http://localhost:4001/profile/heartbeat
+
+
+###
+GET http://localhost:4001/api/v1/profile/info/1001
+
+
+
+###
+POST http://localhost:4001/api/v1/buyerToken
+Content-Type: application/json
+
+{
+    "buyer_wallet_address":"sgdsdfghlsfgskfd"
+}
+
+###
+POST http://localhost:4001/api/v1/buyer/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiItOTk5IiwiaWF0IjoxNjkxMzM5OTg2LCJleHAiOjE2OTEzNDAyODYsInR5cGUiOiJidXllciJ9.geQRRIrt7-y76issG28ys4e30NDYzS5ip5PRjmdSAKg
+Content-Type: application/json
+
+{
+        "buyer_wallet_address": "sgdsdfghlsfgskfd",
+        "no_of_mct_tokens_bought": 8,
+        "mct_token_price": 14,
+        "total_amount_paid_for_mct_tokens": 70,
+        "mct_tokens_purchase_date": "2023-04-12T06:22:52.000Z",
+        "presale_phase": 2
+    }
+
+
+
+###
+POST http://localhost:4001/api/v1/profile/forgotPassword
+Content-Type: application/json
+
+{
+    "emailAddress":"GD@gmail.com"
+}
+
+###
+POST http://localhost:4001/api/v1/profile/register
+Content-Type: application/json
+
+{
+  "emailAddress": "rahufdgdsl@gmail.com",
+  "password": "1234567890aA&",
+  "firstName": "Rahul",
+  "lastName": "Raghunath",
+  "profileType":"1"
+}
+
+###
+PUT http://localhost:4001/api/v1/profile/verifyEmail/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwMTYsImlhdCI6MTcxMDEwNDAxMiwiZXhwIjoxNzEwMTA0NjEyLCJ0eXBlIjo0fQ.rxjB2sxi6FqVxDWlg9GaV3FaJJh5WwVSNbbrhJEMwTk
+Content-Type: application/json
+
+###
+POST http://localhost:4001/api/v1/profile/regenerateVerifyEmail/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwMTUsImlhdCI6MTcxMDEwMjkzOSwiZXhwIjoxNzEwMTAzNTM5LCJ0eXBlIjo0fQ.lQ1IIzWVCvNt3f0_eONp9UAk96ZmCrZ5G551cXT01EI
+Content-Type: application/json
+
+
+
+###
+POST http://localhost:4001/api/v1/profile/login
+Content-Type: application/json
+
+{
+    "email":"ur@gmail.com",
+    "password": "1234567890aA&"
+}
+
+###
+POST http://localhost:4001/api/v1/profile/forgotChangePassword/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwMTAsImlhdCI6MTcwOTEyNTIwOSwiZXhwIjoxNzA5MjExNjA5LCJ0eXBlIjo1fQ.caay3mYZrHT7eT9bkXSsLC-Iezc12WlySD8DH3fkmzE
+Content-Type: application/json
+
+{
+        "newPassword":"1234567890aA&change",
+        "confirmPassword":"1234567890aA&change"
+}
+ 
+###
+POST http://localhost:4001/api/v1/preSalePhases
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE2MiwiaWF0IjoxNjkzMzk2OTc3LCJleHAiOjE2OTMzOTg3NzcsInR5cGUiOiJhY2Nlc3MifQ.rk9iEw6hMGyrXTE8hI_HbrctmWV3GDKvzHg_GSPO6_w
+
+{
+      "phaseNumber": 1,
+      "phaseDesc": "dfsf",
+      "startDate": "2024-01-03",
+      "endDate": "2024-08-31",
+      "tokenPriceUsd": 2.002,
+      "tokensAvailable": 556484848,
+      "tokensSold": 4844654
+      
+    }
+
+###
+PUT  http://localhost:4001/api/v1/preSalePhases/4
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE2MiwiaWF0IjoxNjkzMzk2OTc3LCJleHAiOjE2OTMzOTg3NzcsInR5cGUiOiJhY2Nlc3MifQ.rk9iEw6hMGyrXTE8hI_HbrctmWV3GDKvzHg_GSPO6_w
+
+{
+    
+    "tokenPriceUsd": 2.5233
+      
+ } 
+
+###
+GET  http://localhost:4001/api/v1/contactForms?fromDate=2023-04-01&toDate=2023-08-10
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE2MiwiaWF0IjoxNjkyMjY5MzIzLCJleHAiOjE2OTIyNzExMjMsInR5cGUiOiJhY2Nlc3MifQ.-9EvcXxMZ0N8YtaByMXRt_yo2fnmmq-1jlfK1yeJ9bc
+
+###
+GET  http://localhost:4001/api/v1/enquiries?fromDate=2023-04-01&toDate=2023-08-04
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE2MiwiaWF0IjoxNjkyMDMzMDQ4LCJleHAiOjE2OTIwMzQ4NDgsInR5cGUiOiJhY2Nlc3MifQ.pP14E22yDxju60pnFeyyalex3-EEAPpALk9BLhVGXO0
+
+###
+GET  http://localhost:4001/api/v1/signUpMcts?fromDate=2023-04-01&toDate=2023-08-04
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE2MiwiaWF0IjoxNjkyNjk1NjM0LCJleHAiOjE2OTI2OTc0MzQsInR5cGUiOiJhY2Nlc3MifQ.IU_5ihNSfbRshtVYu1IfdsMWdj-N1CvvQmcZqY5VcOA
+
+###
+GET  http://localhost:4001/api/v1/preSalePhases/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE2MiwiaWF0IjoxNjkyODc0MjgxLCJleHAiOjE2OTI4NzYwODEsInR5cGUiOiJhY2Nlc3MifQ.iHQSvNbwN7m38yll0CvgCTMQh4jgMfn9MYFLt1Q8m2k
+
+###
+GET  http://localhost:4001/api/v1/profile/address/countries
+
+###
+GET  http://localhost:4001/api/v1/profile/address/101/states
+
+###
+GET  http://localhost:4001/api/v1/profile/address/488/cities
+
+
+###
+GET  http://localhost:4001/api/v1/campaigns
+
+###
+POST  http://localhost:4001/api/v1/campaigns
+Content-Type: application/json
+
+{ 
+     "CampaignName":"Campaign Name",
+      "Description":"Akhil loves devika",
+      "TargetAmount":"5000",
+      "CampaignEndDate" : "2024-02-15 15:30:45"
+}
