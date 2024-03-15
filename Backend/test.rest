@@ -147,3 +147,21 @@ Content-Type: application/json
       "TargetAmount":"5000",
       "CampaignEndDate" : "2024-02-15 15:30:45"
 }
+
+###
+POST  http://localhost:4001/api/v1/register
+Content-Type: application/json
+
+{ 
+  "email": "rahufdgdsl@gmail.com",
+  "password": "1234567890aA&"
+}
+
+###
+POST  http://localhost:4001/api/v1/login
+Content-Type: application/json
+
+{ 
+  "email": "rahufdgdsl@gmail.com",
+  "password": "1234567890aA&"
+}
