@@ -3,6 +3,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const logger = require('./src/utilities/logger')
 const routes = require('./src/routes/v1')
+const Razorpay = require('razorpay')
 
 const app = express()
 app.use(cors())
@@ -38,6 +39,44 @@ app.use((req, res, next) => {
   next()
 })
 
+app.post('/order', async (req, res) => {
+  try {
+    const razorpay = new Razorpay({
+      key_id: process.env.RAZORPAY_KEY_ID,
+      key_secret: process.env.RAZORPAY_SECRET
+    })
+
+    const options = req.body
+    const order = await razorpay.orders.create(options)
+
+    if (!order) {
+      return res.status(500).send('Error')
+    }
+
+    res.json(order)
+  } catch (err) {
+    console.log(err)
+    res.status(500).send('Error')
+  }
+})
+
+app.post('/order/validate', async (req, res) => {
+  const { razorpayOrderId, razorpayPaymentId, razorpaySignature } = req.body
+
+  const sha = crypto.createHmac('sha256', process.env.RAZORPAY_SECRET)
+
+  sha.update(`${razorpayOrderId}|${razorpayPaymentId}`)
+  const digest = sha.digest('hex')
+  if (digest !== razorpaySignature) {
+    return res.status(400).json({ msg: 'Transaction is not legit!' })
+  }
+
+  res.json({
+    msg: 'success',
+    orderId: razorpayOrderId,
+    paymentId: razorpayPaymentId
+  })
+})
 app.use(`/${process.env.API_PREFIX}/${process.env.VERSION_V1}`, routes)
 
 module.exports = app
