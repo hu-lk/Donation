@@ -1,6 +1,6 @@
 const logger = require('../utilities/logger')
 const User = require('../models/user.model')
-const generateAuthTokens = require('../helpers/jwt_helper')
+const jwt_helper = require('../helpers/jwt_helper')
 const bcrypt = require('bcrypt')
 
 // Login
@@ -29,7 +29,7 @@ const login = async (req, res) => {
       })
     }
 
-    const tokens = await generateAuthTokens(user)
+    const tokens = await jwt_helper.generateAuthTokens(user)
 
     res.status(200).json(tokens)
   } catch (error) {

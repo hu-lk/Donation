@@ -39,11 +39,10 @@ const generateToken = (
 
 const saveToken = async (token, userId, expires, tokenType) => {
   const tokenDoc = await Token.create({
-    tokenValue: token,
-    profileId: userId,
-    expiresAt: expires.toDate(),
-    issuedAt: new Date(),
-    tokenType
+    UserID: userId,
+    TokenType: tokenType,
+    Token: token,
+    ExpiryDateTime: expires.toDate()
   })
   return tokenDoc
 }

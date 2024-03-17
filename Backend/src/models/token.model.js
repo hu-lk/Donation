@@ -1,4 +1,3 @@
-// models/Token.js
 const { DataTypes } = require('sequelize')
 const db = require('../config/sequelize')
 
@@ -12,7 +11,7 @@ const Token = db.define('Token', {
     type: DataTypes.INTEGER
   },
   TokenType: {
-    type: DataTypes.ENUM('access', 'refresh'),
+    type: DataTypes.ENUM('ACCESS', 'REFRESH'),
     allowNull: false
   },
   Token: {
