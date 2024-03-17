@@ -2,6 +2,7 @@ const express = require('express')
 const registerProfileRoute = require('./registerProfile.route')
 const campaignRoute = require('./campaign.route')
 const authRoute = require('./auth.route')
+const paymentRoute = require('./payment.route')
 
 const router = express.Router()
 
@@ -17,6 +18,10 @@ const defaultRoutes = [
   {
     path: '',
     route: campaignRoute
+  },
+  {
+    path: '',
+    route: paymentRoute
   }
 ]
 

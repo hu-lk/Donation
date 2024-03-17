@@ -3,6 +3,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const logger = require('./src/utilities/logger')
 const routes = require('./src/routes/v1')
+const Razorpay = require('razorpay')
 
 const app = express()
 app.use(cors())

@@ -2,20 +2,20 @@ const { DataTypes } = require('sequelize')
 const db = require('../config/sequelize')
 
 const User = db.define('User', {
-  UserID: {
+  userID: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
-  Email: {
+  email: {
     type: DataTypes.STRING(100),
     allowNull: false
   },
-  Password: {
+  password: {
     type: DataTypes.STRING(255),
     allowNull: false
   },
-  RegistrationDate: {
+  registrationDate: {
     type: DataTypes.DATE,
     defaultValue: DataTypes.NOW
   }

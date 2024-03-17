@@ -27,7 +27,7 @@ const Login = () => {
     // Make an API call to your backend for authentication
     try {
       // Replace the following line with your actual API endpoint for authentication
-      const response = await fetch('YOUR_BACKEND_API_ENDPOINT', {
+      const response = await fetch('http://localhost:4001/api/v1/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ const Login = () => {
 
       if (response.ok) {
         // Authentication successful, redirect to the dashboard
-        navigate('/dashboard')
+        navigate('/user/dashboard')
       } else {
         // Authentication failed, handle error
         setError('Invalid email or password')
@@ -52,24 +52,24 @@ const Login = () => {
     <div className={style.LoginContainer}>
       <Card className={style.CardContainer}>
         <h2 className={style.CardHeader}>Login</h2>
-        <div className="p-fluid">
-          <div className="p-field">
-            <label className={style.FieldLabel} htmlFor="email">
+        <div className='p-fluid'>
+          <div className='p-field'>
+            <label className={style.FieldLabel} htmlFor='email'>
               Email
             </label>
             <InputText
-              id="email"
-              type="text"
+              id='email'
+              type='text'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className="p-field">
-            <label className={style.FieldLabel} htmlFor="password">
+          <div className='p-field'>
+            <label className={style.FieldLabel} htmlFor='password'>
               Password
             </label>
             <Password
-              id="password"
+              id='password'
               feedback={false}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -77,13 +77,13 @@ const Login = () => {
           </div>
           {error && <div className={style.ErrorMessage}>{error}</div>}
           <Button
-            label="Login"
-            icon="pi pi-sign-in"
-            className="p-mt-3"
+            label='Login'
+            icon='pi pi-sign-in'
+            className='p-mt-3'
             onClick={handleLogin}
           />
-          <div className="p-mt-3">
-            Not yet registered? <Link to="/auth/register">Register here</Link>
+          <div className='p-mt-3'>
+            Not yet registered? <Link to='/auth/register'>Register here</Link>
           </div>
         </div>
       </Card>
